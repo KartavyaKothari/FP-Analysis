@@ -1,6 +1,5 @@
 import java.util.*;
 
-class FP {
 class UserResponse{
     int noOfInputs;
     int noOfOutputs;
@@ -9,7 +8,7 @@ class UserResponse{
     int noOfInterfaces;
 }
 
-<<<<<<< HEAD
+class FP{
     static int getVAF() {
 
         Scanner sc = new Scanner(System.in);
@@ -45,59 +44,62 @@ class UserResponse{
             System.out.print(ques[i]);
             vaf[i] = sc.nextInt();
 
+            if ((vaf[i] < 0) || (vaf[i] > 4)) {
+
+                System.out.println("Enter values between 0-4 !!!!");
+                return 0;
+            }
+
             sum = sum + vaf[i];
         }
 
         return sum;
     }
-=======
-class FP {
->>>>>>> 99497c114b090177f6d25a1059f11c278a9f810b
 
     static UserResponse getUserResponse(){
         Scanner sc = new Scanner(System.in);
         UserResponse ur = new UserResponse();
-        
-        Sytem.out.print("How many inputs expected? ");
+
+        System.out.print("How many inputs expected? ");
         ur.noOfInputs = sc.nextInt();
-        Sytem.out.print("How many outputs expected? ");
+        System.out.print("How many outputs expected? ");
         ur.noOfOutputs = sc.nextInt();
-        Sytem.out.print("How many enquiries expected? ");
+        System.out.print("How many enquiries expected? ");
         ur.noOfEnquiries = sc.nextInt();
-        Sytem.out.print("How many files expected? ");
+        System.out.print("How many files expected? ");
         ur.noOfFiles = sc.nextInt();
-        Sytem.out.print("How many interfaces expected? ");
+        System.out.print("How many interfaces expected? ");
         ur.noOfInterfaces = sc.nextInt();
-        
+
         return ur;
     }
-    
+
     static int getCountTotal(UserResponse ur, int metrics[]){
         int countTotal = ur.noOfInputs*metrics[0]+
                             ur.noOfOutputs*metrics[1]+
                             ur.noOfEnquiries*metrics[2]+
                             ur.noOfFiles*metrics[3]+
                             ur.noOfInterfaces*metrics[4];
-        
+
         return countTotal;
     }
-        
+
     public static void main(String[] args) {
         int metricsS[] = {3,4,3,7,5};
         int metricsA[] = {4,5,4,10,7};
         int metricsC[] = {6,7,6,15,10};
-        
+
         Scanner sc = new Scanner(System.in);
-        
+
         int response;
-        
+
         System.out.print("Is it expected to be\n1 - simple\n2 - average\n3 - complex\nResponse: ");
         response = sc.nextInt();
-        
+
         UserResponse ur = getUserResponse();
-        
-        int countTotal;
-        
+
+        int countTotal = 0;
+
         switch(response){
             case 1: countTotal = getCountTotal(ur,metricsS);
                     break;
@@ -106,11 +108,15 @@ class FP {
             case 3: countTotal = getCountTotal(ur,metricsC);
                     break;
         }
-        
+
+        System.out.println("Count total = " + countTotal);
+
         int adjustmentFactor = getVAF();
-        
-        double fp = countTotaL*(0.65+0.01*adjustmentFactor);
-        
+
+        double fp = countTotal*(0.65+0.01*adjustmentFactor);
+
+        System.out.println("FP = "+fp);
+
         if(fp<50){
             System.out.println("System FP not in expected range, redo the analysis, please :)");
         }else if(fp<70){
@@ -125,6 +131,6 @@ class FP {
             if(response == 3){
                 System.out.println("System FP in expected range :) (Complex system)");
             } else System.out.println("System FP not in expected range, redo the analysis, please :)");
-        }
+        }else System.out.println("System FP not in expected range, redo the analysis, please :)");
     }
 }
