@@ -6,6 +6,7 @@ class FP {
 
         Scanner sc = new Scanner(System.in);
 
+        int sum = 0;
         int vaf[] = new int[14];
 
         String ques[] = {
