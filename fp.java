@@ -40,7 +40,6 @@ class FP{
 
         for (int i=0; i<14; i++) {
 
-            System.out.println();
             System.out.print(ques[i]);
             vaf[i] = sc.nextInt();
 
@@ -60,15 +59,15 @@ class FP{
         Scanner sc = new Scanner(System.in);
         UserResponse ur = new UserResponse();
 
-        System.out.print("How many inputs expected? ");
+        System.out.print("How many inputs expected? - ");
         ur.noOfInputs = sc.nextInt();
-        System.out.print("How many outputs expected? ");
+        System.out.print("How many outputs expected? - ");
         ur.noOfOutputs = sc.nextInt();
-        System.out.print("How many enquiries expected? ");
+        System.out.print("How many enquiries expected? - ");
         ur.noOfEnquiries = sc.nextInt();
-        System.out.print("How many files expected? ");
+        System.out.print("How many files expected? - ");
         ur.noOfFiles = sc.nextInt();
-        System.out.print("How many interfaces expected? ");
+        System.out.print("How many interfaces expected? - ");
         ur.noOfInterfaces = sc.nextInt();
 
         return ur;
@@ -93,8 +92,9 @@ class FP{
 
         int response;
 
-        System.out.print("Is it expected to be\n1 - simple\n2 - average\n3 - complex\nResponse: ");
+        System.out.print("Is it expected to be\n\n1 - simple\n2 - average\n3 - complex\n\nResponse: ");
         response = sc.nextInt();
+        System.out.println();
 
         UserResponse ur = getUserResponse();
 
@@ -109,13 +109,16 @@ class FP{
                     break;
         }
 
+        System.out.println();
         System.out.println("Count total = " + countTotal);
 
         int adjustmentFactor = getVAF();
 
         double fp = countTotal*(0.65+0.01*adjustmentFactor);
 
+        System.out.println();
         System.out.println("FP = "+fp);
+        System.out.println();
 
         if(fp<50){
             System.out.println("System FP not in expected range, redo the analysis, please :)");
