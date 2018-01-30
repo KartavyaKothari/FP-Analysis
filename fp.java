@@ -1,6 +1,7 @@
 import java.util.*;
 
-class UserResponse{
+class UserResponse {
+
     int noOfInputs;
     int noOfOutputs;
     int noOfEnquiries;
@@ -9,6 +10,7 @@ class UserResponse{
 }
 
 class FP{
+
     static int getVAF() {
 
         Scanner sc = new Scanner(System.in);
@@ -55,25 +57,31 @@ class FP{
         return sum;
     }
 
-    static UserResponse getUserResponse(){
+    static UserResponse getUserResponse() {
+
         Scanner sc = new Scanner(System.in);
         UserResponse ur = new UserResponse();
 
         System.out.print("How many inputs expected? - ");
         ur.noOfInputs = sc.nextInt();
+
         System.out.print("How many outputs expected? - ");
         ur.noOfOutputs = sc.nextInt();
+
         System.out.print("How many enquiries expected? - ");
         ur.noOfEnquiries = sc.nextInt();
+
         System.out.print("How many files expected? - ");
         ur.noOfFiles = sc.nextInt();
+
         System.out.print("How many interfaces expected? - ");
         ur.noOfInterfaces = sc.nextInt();
 
         return ur;
     }
 
-    static int getCountTotal(UserResponse ur, int metrics[]){
+    static int getCountTotal(UserResponse ur, int metrics[]) {
+
         int countTotal = ur.noOfInputs*metrics[0]+
                             ur.noOfOutputs*metrics[1]+
                             ur.noOfEnquiries*metrics[2]+
@@ -84,6 +92,7 @@ class FP{
     }
 
     public static void main(String[] args) {
+
         int metricsS[] = {3,4,3,7,5};
         int metricsA[] = {4,5,4,10,7};
         int metricsC[] = {6,7,6,15,10};
@@ -100,11 +109,14 @@ class FP{
 
         int countTotal = 0;
 
-        switch(response){
+        switch(response) {
+
             case 1: countTotal = getCountTotal(ur,metricsS);
                     break;
+
             case 2: countTotal = getCountTotal(ur,metricsA);
                     break;
+
             case 3: countTotal = getCountTotal(ur,metricsC);
                     break;
         }
@@ -120,20 +132,41 @@ class FP{
         System.out.println("FP = "+fp);
         System.out.println();
 
-        if(fp<50){
+        if(fp<50) {
+
             System.out.println("System FP not in expected range, redo the analysis, please :)");
-        }else if(fp<70){
-            if(response == 1){
+        }
+
+        else if(fp<70) {
+
+            if(response == 1) {
+
                 System.out.println("System FP in expected range :) (Simple system)");
-            } else System.out.println("System FP not in expected range, redo the analysis, please :)");
-        }else if(fp<80){
-            if(response == 2){
+            }
+
+            else System.out.println("System FP not in expected range, redo the analysis, please :)");
+        }
+
+        else if(fp<80) {
+
+            if(response == 2) {
+
                 System.out.println("System FP in expected range :) (Average system)");
-            } else System.out.println("System FP not in expected range, redo the analysis, please :)");
-        }else if(fp<100){
-            if(response == 3){
+            }
+
+            else System.out.println("System FP not in expected range, redo the analysis, please :)");
+        }
+
+        else if(fp<100) {
+
+            if(response == 3) {
+
                 System.out.println("System FP in expected range :) (Complex system)");
-            } else System.out.println("System FP not in expected range, redo the analysis, please :)");
-        }else System.out.println("System FP not in expected range, redo the analysis, please :)");
+            }
+
+            else System.out.println("System FP not in expected range, redo the analysis, please :)");
+        }
+
+        else System.out.println("System FP not in expected range, redo the analysis, please :)");
     }
 }
