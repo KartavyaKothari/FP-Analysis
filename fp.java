@@ -9,7 +9,7 @@ class UserResponse {
     int noOfInterfaces;
 }
 
-class FP{
+class FP {
 
     static int getVAF() {
 
